@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://but4bnpr4kg5n"]
+
+[ext_resource type="Texture2D" uid="uid://dgsu2e7a3euw8" path="res://icon.svg" id="1_2eswe"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_d6ehs"]
+radius = 59.665737
+
+[node name="weevilplayer" type="CharacterBody2D" unique_id=1331987397]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=766405106]
+texture = ExtResource("1_2eswe")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1335047340]
+shape = SubResource("CircleShape2D_d6ehs")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=725885765]
+zoom = Vector2(0.6, 0.6)
