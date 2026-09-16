@@ -1,0 +1,117 @@
+[gd_scene format=3 uid="uid://cha7muhjiu2m4"]
+
+[ext_resource type="Texture2D" uid="uid://catmvd5folug5" path="res://assets/fourSeasonsPlatformer_ [tileset, version 2.0]/fourSeasonsPlatformer_ [tileset, version 2.0]/objects_/beeenemy.png" id="1_qa7ai"]
+
+[sub_resource type="GDScript" id="GDScript_ts171"]
+script/source = "extends Node2D
+
+
+func _on_area_2d_body_entered(body: Node2D) -> void:
+	if body.is_in_group(\"Player\"):
+		body.velocity.y=-300
+		queue_free()
+
+
+func _on_area_2d_2_body_entered(body: Node2D) -> void:
+	if body.is_in_group(\"Player\"):
+		get_tree().reload_current_scene()
+"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qa7ai"]
+atlas = ExtResource("1_qa7ai")
+region = Rect2(389, 317, 58, 63)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ts171"]
+atlas = ExtResource("1_qa7ai")
+region = Rect2(452, 317, 58, 63)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u1lac"]
+atlas = ExtResource("1_qa7ai")
+region = Rect2(515, 317, 58, 63)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v51pk"]
+atlas = ExtResource("1_qa7ai")
+region = Rect2(11, 2, 58, 63)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_llsl0"]
+atlas = ExtResource("1_qa7ai")
+region = Rect2(74, 2, 58, 63)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i4h6l"]
+atlas = ExtResource("1_qa7ai")
+region = Rect2(137, 2, 58, 63)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6pmfm"]
+atlas = ExtResource("1_qa7ai")
+region = Rect2(74, 65, 58, 63)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4lpie"]
+atlas = ExtResource("1_qa7ai")
+region = Rect2(137, 191, 58, 63)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_53lpi"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qa7ai")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ts171")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u1lac")
+}],
+"loop": 1,
+"name": &"defeat",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v51pk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_llsl0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i4h6l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6pmfm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4lpie")
+}],
+"loop": 1,
+"name": &"idle",
+"speed": 9.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3s2eq"]
+size = Vector2(40, 14)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kf6k6"]
+size = Vector2(36, 21)
+
+[node name="Bee" type="Node2D" unique_id=1265450632]
+script = SubResource("GDScript_ts171")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=883103906]
+position = Vector2(2, -2)
+sprite_frames = SubResource("SpriteFrames_53lpi")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="Area2D" type="Area2D" parent="." unique_id=983688554]
+
+[node name="head" type="CollisionShape2D" parent="Area2D" unique_id=1996730993]
+position = Vector2(-9, -11)
+shape = SubResource("RectangleShape2D_3s2eq")
+
+[node name="Area2D2" type="Area2D" parent="." unique_id=1214743692]
+
+[node name="stinger" type="CollisionShape2D" parent="Area2D2" unique_id=1750313672]
+position = Vector2(-7, 6.5)
+shape = SubResource("RectangleShape2D_kf6k6")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="Area2D2" to="." method="_on_area_2d_2_body_entered"]

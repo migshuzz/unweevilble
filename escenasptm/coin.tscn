@@ -12,6 +12,7 @@ func _on_body_entered(body: Node2D) -> void:
 			body.add_coin()
 
 		emit_signal(\"collected\")
+		body.add_coins()
 
 		queue_free()
 

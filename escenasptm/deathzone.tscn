@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://o50bt12bg88x"]
+
+[sub_resource type="GDScript" id="GDScript_66ay2"]
+script/source = "extends Area2D
+
+
+func _on_body_entered(body: Node2D) -> void:if body.is_in_group(\"Player\"):
+ get_tree().reload_current_scene()
+"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d6ehs"]
+size = Vector2(1927, 208)
+
+[node name="deathzone" type="Area2D" unique_id=1930832391]
+script = SubResource("GDScript_66ay2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1264979008 groups=["player"]]
+position = Vector2(953.5, 94)
+shape = SubResource("RectangleShape2D_d6ehs")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
