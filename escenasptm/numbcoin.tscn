@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://b40umnv7w03vi"]
 
 [ext_resource type="Texture2D" uid="uid://dxor48ijnpud2" path="res://assets/fourSeasonsPlatformer_ [tileset, version 2.0]/fourSeasonsPlatformer_ [tileset, version 2.0]/objects_/coin_.png" id="1_1a8sh"]
+[ext_resource type="FontFile" uid="uid://2psugu74imy" path="res://assets/wacky-pixels/Wacky Pixels.ttf" id="1_u2c0u"]
 
 [sub_resource type="GDScript" id="GDScript_u2hrj"]
 script/source = "extends CanvasLayer
@@ -11,6 +12,12 @@ script/source = "extends CanvasLayer
 func set_coins(amount) : 
 	coin_label.text=str(amount)
 "
+
+[sub_resource type="FontVariation" id="FontVariation_xio1r"]
+base_font = ExtResource("1_u2c0u")
+
+[sub_resource type="FontVariation" id="FontVariation_qh4fs"]
+base_font = SubResource("FontVariation_xio1r")
 
 [node name="CanvasLayer" type="CanvasLayer" unique_id=1467732454]
 script = SubResource("GDScript_u2hrj")
@@ -23,17 +30,21 @@ offset_bottom = 40.0
 
 [node name="Label" type="Label" parent="Control" unique_id=456311834]
 layout_mode = 0
-offset_left = 84.0
-offset_top = -1.0
-offset_right = 170.0
-offset_bottom = 102.0
-theme_override_font_sizes/font_size = 75
+offset_left = 79.0
+offset_top = 4.0
+offset_right = 165.0
+offset_bottom = 107.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 14
+theme_override_fonts/font = SubResource("FontVariation_qh4fs")
+theme_override_font_sizes/font_size = 130
 text = "0"
 
-[node name="Node2D" type="Node2D" parent="Control/Label" unique_id=1240711199]
+[node name="Node2D" type="Node2D" parent="Control" unique_id=1240711199]
+position = Vector2(80, -10)
 
-[node name="Sprite2D" type="Sprite2D" parent="Control/Label/Node2D" unique_id=814030296]
-position = Vector2(-41, 56.000004)
+[node name="Sprite2D" type="Sprite2D" parent="Control" unique_id=814030296]
+position = Vector2(39, 46.000004)
 scale = Vector2(6.066463, 6.146646)
 texture = ExtResource("1_1a8sh")
 hframes = 12

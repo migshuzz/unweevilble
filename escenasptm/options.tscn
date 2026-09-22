@@ -1,0 +1,89 @@
+[gd_scene format=3 uid="uid://bryy6gcl88psg"]
+
+[ext_resource type="Texture2D" uid="uid://vfl5nxvnbfdv" path="res://assets/fourSeasonsPlatformer_ [tileset, version 2.0]/fourSeasonsPlatformer_ [tileset, version 2.0]/background_/OPTIONS.png" id="1_wu7s3"]
+[ext_resource type="FontFile" uid="uid://2psugu74imy" path="res://assets/wacky-pixels/Wacky Pixels.ttf" id="2_60i3u"]
+[ext_resource type="AudioStream" uid="uid://c3ifvylioeuc" path="res://assets/TitanicTower1.mp3" id="3_60i3u"]
+
+[sub_resource type="GDScript" id="GDScript_xtqvm"]
+script/source = "extends Control
+
+
+
+
+func _on_back_pressed() -> void:
+	get_tree().change_scene_to_file(\"res://escenasptm/menu.tscn\")
+"
+
+[node name="OPTIONS" type="Control" unique_id=2040905318]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = SubResource("GDScript_xtqvm")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1036564401]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.2583077, 0.2702404, 0.74754804, 1)
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1858103255]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -11.0
+offset_right = 362.6709
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_wu7s3")
+expand_mode = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1990259212]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -328.25
+offset_top = -221.0
+offset_right = 328.25
+offset_bottom = 221.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 50
+
+[node name="VOLUME" type="Button" parent="VBoxContainer" unique_id=112001555]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_60i3u")
+theme_override_font_sizes/font_size = 130
+text = "VOLUME"
+
+[node name="RESOLUTION" type="Button" parent="VBoxContainer" unique_id=1521286676]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_60i3u")
+theme_override_font_sizes/font_size = 130
+text = "RESOLUTION"
+
+[node name="BACK" type="Button" parent="VBoxContainer" unique_id=1650281745]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_60i3u")
+theme_override_font_sizes/font_size = 130
+text = "BACK"
+
+[node name="TitanicTower1" type="AudioStreamPlayer2D" parent="." unique_id=1174969203]
+position = Vector2(-119, 526)
+stream = ExtResource("3_60i3u")
+volume_db = -15.125
+autoplay = true
+
+[connection signal="pressed" from="VBoxContainer/VOLUME" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="VBoxContainer/RESOLUTION" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="VBoxContainer/BACK" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="VBoxContainer/BACK" to="." method="_on_back_pressed"]

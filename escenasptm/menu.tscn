@@ -1,0 +1,114 @@
+[gd_scene format=3 uid="uid://di5gj3d04gnwk"]
+
+[ext_resource type="FontFile" uid="uid://2psugu74imy" path="res://assets/wacky-pixels/Wacky Pixels.ttf" id="1_buxhx"]
+[ext_resource type="Texture2D" uid="uid://dchnxg4ynn0ss" path="res://assets/fourSeasonsPlatformer_ [tileset, version 2.0]/fourSeasonsPlatformer_ [tileset, version 2.0]/background_/MENU.png" id="1_x3sk2"]
+[ext_resource type="AudioStream" uid="uid://c3ifvylioeuc" path="res://assets/TitanicTower1.mp3" id="3_0r2ei"]
+
+[sub_resource type="GDScript" id="GDScript_x3sk2"]
+script/source = "extends Control
+
+
+
+func _on_play_pressed() -> void:
+	get_tree().change_scene_to_file(\"res://escenasptm/mapa.tscn\")
+
+
+func _on_options_pressed() -> void:
+	get_tree().change_scene_to_file(\"res://escenasptm/options.tscn\")
+
+
+func _on_quit_pressed() -> void:
+	get_tree().quit()
+"
+
+[node name="Menu" type="Control" unique_id=2040905318]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = SubResource("GDScript_x3sk2")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1036564401]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.2583077, 0.2702404, 0.74754804, 1)
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1858103255]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -2.0
+offset_right = -2.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_x3sk2")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="." unique_id=1765264456]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -545.0
+offset_top = -253.0
+offset_right = 555.0
+offset_bottom = -102.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.9610546, 0.72549796, 0.21060535, 1)
+theme_override_colors/font_outline_color = Color(0.6651851, 0.19966345, 0.025840001, 1)
+theme_override_constants/outline_size = 35
+theme_override_fonts/font = ExtResource("1_buxhx")
+theme_override_font_sizes/font_size = 200
+text = "UNWEEVILBLE!!"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1990259212]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.05
+anchor_top = 0.5
+anchor_right = 0.05
+anchor_bottom = 0.5
+offset_left = -25.600002
+offset_top = -83.0
+offset_right = 434.4
+offset_bottom = 167.0
+grow_vertical = 2
+theme_override_constants/separation = 10
+
+[node name="play" type="Button" parent="VBoxContainer" unique_id=112001555]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_buxhx")
+theme_override_font_sizes/font_size = 90
+text = "PLAY"
+
+[node name="options" type="Button" parent="VBoxContainer" unique_id=1521286676]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_buxhx")
+theme_override_font_sizes/font_size = 90
+text = "OPTIONS"
+
+[node name="quit" type="Button" parent="VBoxContainer" unique_id=1650281745]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_buxhx")
+theme_override_font_sizes/font_size = 90
+text = "QUIT"
+
+[node name="TitanicTower1" type="AudioStreamPlayer2D" parent="." unique_id=176592154]
+position = Vector2(-93, 539)
+stream = ExtResource("3_0r2ei")
+volume_db = -16.167
+autoplay = true
+
+[connection signal="pressed" from="VBoxContainer/play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="VBoxContainer/options" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="VBoxContainer/quit" to="." method="_on_quit_pressed"]
